@@ -2,4 +2,4 @@
 
 AlarmTell is a Twillio app that parses received calls for the Contact ID format and then sends the appropriate SMS message to a phone number.
 
-More to come soom
+More to come soon...
