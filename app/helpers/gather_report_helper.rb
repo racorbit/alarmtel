@@ -1,0 +1,2 @@
+module GatherReportHelper
+end

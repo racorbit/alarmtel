@@ -1,0 +1,2 @@
+module ReportVoiceHelper
+end
