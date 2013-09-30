@@ -4,6 +4,7 @@ Alarmtell::Application.routes.draw do
   get 'report_voice' => 'report_voice#create', as: :create_voice_report
   
   post 'gather_report' => 'gather_report#gather', as: :gather_voice_report
+  get 'gather_report' => 'gather_report#gather', as: :gather_voice_report
 
 
   # The priority is based upon order of creation:
