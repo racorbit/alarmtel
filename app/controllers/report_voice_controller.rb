@@ -6,11 +6,18 @@ class ReportVoiceController < ApplicationController
     auth_token = '880f2a102a6c979c3cd5c594a31be526'
 
     response = Twilio::TwiML::Response.new do |r|
-      # r.Say 'Yo what up Dogie Doglock?', :voice => 'alice'
-      r.Gather :action => '/gather_report', :timeout => '5', :finishOnKey => ' ' do |g|
+      # r.Say 'Yo what up Doggie Doglock?', :voice => 'alice'
+      url_root = url_for :only_path => false
+      r.Play "#{url_root.gsub! "report_voice", ""}assets/handshake.aif"
+      r.Gather :action => '/gather_report', :numDigits => '16', :timeout => '5', :finishOnKey => ' ' do |g|
+      # r.Play "#{url_root.gsub! "report_voice", ""}assets/kiss_off.aif"
+      # r.Hangup
+      # r.Play "#{url_root.gsub! "report_voice", ""}assets/kiss_off.aif"
       end
     end
 
+    puts "-----------------------"
+    puts response.text
     render :xml => response.text
   end
 end

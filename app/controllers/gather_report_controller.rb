@@ -6,7 +6,7 @@ class GatherReportController < ApplicationController
     digits = params[:Digits]
 
     # SSSS 18 Q XYZ GG CCC N
-    # 1234 18 1 131 01 015 8
+    # 0001 18 1 131 01 015 8
 
     digit_hash = Hash[
       "account_code", digits[0..3],
@@ -41,6 +41,8 @@ class GatherReportController < ApplicationController
 
     response = Twilio::TwiML::Response.new do |r|
       # r.Say 'Thank you sir mix a lot?', :voice => 'alice'
+      url_root = url_for :only_path => false
+      r.Play "#{url_root.gsub! "report_voice", ""}assets/kiss_off.aif"
       r.Hangup
     end
 
